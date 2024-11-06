@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trendwave/authentication/login.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -11,9 +12,9 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
     super.initState();
 
     // Navigate to the next screen after 3 seconds
-    Future.delayed(const Duration(seconds: 4), () {
+    Future.delayed(const Duration(seconds: 3), () {
       Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => NextPage()),
+        MaterialPageRoute(builder: (context) => const LoginScreen()),
       );
     });
   }
@@ -40,16 +41,3 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
   }
 }
 
-class NextPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Next Page'),
-      ),
-      body: const Center(
-        child: Text('Welcome to TrendWave!'),
-      ),
-    );
-  }
-}

@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:trendwave/authentication/email_number_validateotp.dart';
+import 'package:trendwave/authentication/forgotpassword.dart';
+import 'package:trendwave/authentication/forgotpasswordotp.dart';
+import 'package:trendwave/authentication/register.dart';
 import 'package:trendwave/splashscreen/splash.dart';
 import 'package:trendwave/theme/themes.dart';
 
@@ -16,28 +20,7 @@ class MyApp extends StatelessWidget {
       theme: TrendWaveTheme.lightTheme,
       darkTheme: TrendWaveTheme.darkTheme,
       themeMode: ThemeMode.system,
-      home: SplashScreen(),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(""),
-      ),
-      body: Center(
-      ),
+      home: const ValidateUserOtpScreen(),
     );
   }
 }
