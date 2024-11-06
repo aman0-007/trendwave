@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:trendwave/authentication/forgotpasswordotp.dart';
+import 'package:trendwave/authentication/login.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
   const ForgotPasswordScreen({Key? key}) : super(key: key);
@@ -84,7 +86,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                   onTapCancel: () => setState(() => _isButtonPressed = false),
                   onTap: () {
                     Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (context) => const ForgotPasswordScreen()),
+                      MaterialPageRoute(builder: (context) => const ForgotPasswordOtpScreen()),
                     );
                   },
                   child: AnimatedContainer(
@@ -122,8 +124,9 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               Center(
                 child: GestureDetector(
                   onTap: () {
-                    // Navigate to Login screen
-                    Navigator.pop(context);
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (context) => const LoginScreen()),
+                    );
                   },
                   child: Text(
                     "Back to Login",
