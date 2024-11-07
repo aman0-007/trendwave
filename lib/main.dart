@@ -6,6 +6,7 @@ import 'package:trendwave/authentication/forgotpassword.dart';
 import 'package:trendwave/authentication/forgotpasswordotp.dart';
 import 'package:trendwave/authentication/register.dart';
 import 'package:trendwave/bottomnavigation/bottomnavigation.dart';
+import 'package:trendwave/pages/homepage.dart';
 import 'package:trendwave/splashscreen/splash.dart';
 import 'package:trendwave/theme/themes.dart';
 
