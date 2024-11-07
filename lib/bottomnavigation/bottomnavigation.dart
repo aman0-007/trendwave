@@ -33,11 +33,11 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
     final theme = Theme.of(context);
     final primaryColor = theme.colorScheme.primary;
     final secondaryColor = theme.colorScheme.secondary;
-    final backgroundColor = Color(0xFF212121); // Dark background for the navigation bar
-    final selectedColor = Colors.white; // Color for selected tab (white)
+    const backgroundColor = Color(0xFF212121); // Dark background for the navigation bar
+    const selectedColor = Colors.white; // Color for selected tab (white)
     final textColor = theme.brightness == Brightness.light
-        ? Color(0xFF333333)
-        : Color(0xFFCCCCCC); // Header text color based on theme
+        ? const Color(0xFF333333)
+        : const Color(0xFFCCCCCC); // Header text color based on theme
 
     return Scaffold(
       body: _pages[_selectedIndex], // Show the selected page
@@ -51,7 +51,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
             BoxShadow(
               color: Colors.black.withOpacity(.1),
               blurRadius: 30,
-              offset: Offset(0, 10),
+              offset: const Offset(0, 10),
             ),
           ],
           borderRadius: BorderRadius.circular(10),
@@ -69,27 +69,27 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
             child: Stack(
               children: [
                 AnimatedContainer(
-                  duration: Duration(seconds: 1),
+                  duration: const Duration(seconds: 1),
                   curve: Curves.fastLinearToSlowEaseIn,
                   width: index == _selectedIndex
                       ? displayWidth * .32
                       : displayWidth * .18,
                   alignment: Alignment.center,
                   child: AnimatedContainer(
-                    duration: Duration(seconds: 1),
+                    duration: const Duration(seconds: 1),
                     curve: Curves.fastLinearToSlowEaseIn,
                     height: index == _selectedIndex ? displayWidth * .12 : 0,
                     width: index == _selectedIndex ? displayWidth * .32 : 0,
                     decoration: BoxDecoration(
                       color: index == _selectedIndex
-                          ? Color(0xFF333333) // Darker shade for selected tab background
+                          ? const Color(0xFF333333) // Darker shade for selected tab background
                           : Colors.transparent,
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
                 ),
                 AnimatedContainer(
-                  duration: Duration(seconds: 1),
+                  duration: const Duration(seconds: 1),
                   curve: Curves.fastLinearToSlowEaseIn,
                   width: index == _selectedIndex
                       ? displayWidth * .31
@@ -100,19 +100,19 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                       Row(
                         children: [
                           AnimatedContainer(
-                            duration: Duration(seconds: 1),
+                            duration: const Duration(seconds: 1),
                             curve: Curves.fastLinearToSlowEaseIn,
                             width: index == _selectedIndex ? displayWidth * .13 : 0,
                           ),
                           AnimatedOpacity(
                             opacity: index == _selectedIndex ? 1 : 0,
-                            duration: Duration(seconds: 1),
+                            duration: const Duration(seconds: 1),
                             curve: Curves.fastLinearToSlowEaseIn,
                             child: Text(
                               index == _selectedIndex
                                   ? '${listOfStrings[index]}'
                                   : '',
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: selectedColor, // White for selected text
                                 fontWeight: FontWeight.w600,
                                 fontSize: 15,
@@ -124,7 +124,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                       Row(
                         children: [
                           AnimatedContainer(
-                            duration: Duration(seconds: 1),
+                            duration: const Duration(seconds: 1),
                             curve: Curves.fastLinearToSlowEaseIn,
                             width: index == _selectedIndex ? displayWidth * .03 : 20,
                           ),

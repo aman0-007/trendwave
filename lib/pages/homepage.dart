@@ -17,10 +17,10 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
   bool _isManualEntry = false;
   Timer? _restartAnimationTimer;
   List<String> _hintTexts = [
-    'Search the TrendWave',
-    'Join the wave of trend',
-    'Find the latest fashion trends',
-    'Explore your style with TrendWave',
+    'Search the TrendWave.',
+    'Join the wave of trend...',
+    'Find the latest fashion trends.',
+    'Explore your style with TrendWave.',
   ];
 
   @override
@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
       });
     });
 
-    Future.delayed(Duration(seconds: 2), _startTypingAnimation);
+    Future.delayed(const Duration(seconds: 2), _startTypingAnimation);
 
     _focusNode.addListener(() {
       if (_focusNode.hasFocus) {
@@ -44,7 +44,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
         _isManualEntry = true;
       } else if (_controller.text.isEmpty) {
         _isManualEntry = false;
-        _restartAnimationTimer = Timer(Duration(seconds: 2), () {
+        _restartAnimationTimer = Timer(const Duration(seconds: 2), () {
           _currentTextIndex = 0;
           _startTypingAnimation();
         });
@@ -65,21 +65,21 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
 
     for (int i = 0; i < text.length; i++) {
       if (_focusNode.hasFocus || _isManualEntry) return;
-      await Future.delayed(Duration(milliseconds: 100));
+      await Future.delayed(const Duration(milliseconds: 100));
       setState(() {
         _displayText += text[i];
         _controller.text = _displayText;
       });
     }
 
-    await Future.delayed(Duration(milliseconds: 1000));
+    await Future.delayed(const Duration(milliseconds: 1000));
     _backspaceText();
   }
 
   void _backspaceText() async {
     while (_displayText.isNotEmpty) {
       if (_focusNode.hasFocus || _isManualEntry) return;
-      await Future.delayed(Duration(milliseconds: 100));
+      await Future.delayed(const Duration(milliseconds: 100));
       setState(() {
         _displayText = _displayText.substring(0, _displayText.length - 1);
         _controller.text = _displayText;
@@ -104,7 +104,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
     });
 
     _restartAnimationTimer?.cancel();
-    _restartAnimationTimer = Timer(Duration(seconds: 2), _startTypingAnimation); // Delay restart animation
+    _restartAnimationTimer = Timer(const Duration(seconds: 2), _startTypingAnimation); // Delay restart animation
   }
 
   @override
@@ -139,7 +139,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                   SizedBox(width: displayWidth * 0.03),
                   Expanded(
                     child: Container(
-                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10),
@@ -147,20 +147,20 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                           BoxShadow(
                             color: Colors.black.withOpacity(0.2),
                             blurRadius: 10,
-                            offset: Offset(0, 4),
+                            offset: const Offset(0, 4),
                           ),
                         ],
                       ),
                       child: Row(
                         children: [
-                          Icon(Icons.search, color: Colors.grey),
+                          const Icon(Icons.search, color: Colors.grey),
                           Expanded(
                             child: TextField(
                               focusNode: _focusNode,
                               controller: _controller,
                               decoration: InputDecoration(
                                 hintText: _displayText,
-                                hintStyle: TextStyle(color: Colors.grey),
+                                hintStyle: const TextStyle(color: Colors.grey),
                                 border: InputBorder.none,
                               ),
                               style: TextStyle(color: _isManualEntry ? Colors.black : Colors.grey),
@@ -169,7 +169,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                           if (_showClearIcon)
                             GestureDetector(
                               onTap: _clearTextField,
-                              child: Icon(Icons.clear, color: Colors.grey),
+                              child: const Icon(Icons.clear, color: Colors.grey),
                             ),
                         ],
                       ),
