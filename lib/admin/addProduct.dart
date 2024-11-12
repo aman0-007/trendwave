@@ -178,24 +178,42 @@ class _AddProductPageState extends State<AddProductPage> {
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    IconButton(
-                      icon: const Icon(Icons.remove, size: 16),
-                      onPressed: () {
-                        setState(() {
-                          if (sizeQuantities[size]! > 1) {
-                            sizeQuantities[size] = sizeQuantities[size]! - 1;
-                          }
-                        });
-                      },
+                    SizedBox(
+                      width: 24,
+                      height: 24,
+                      child: IconButton(
+                        icon: const Icon(Icons.remove, size: 16),
+                        onPressed: () {
+                          setState(() {
+                            if (sizeQuantities[size]! > 1) {
+                              sizeQuantities[size] = sizeQuantities[size]! - 1;
+                            }
+                          });
+                        },
+                        padding: EdgeInsets.zero,
+                        constraints: const BoxConstraints(),
+                      ),
                     ),
-                    Text(sizeQuantities[size].toString(), style: theme.textTheme.bodySmall),
-                    IconButton(
-                      icon: const Icon(Icons.add, size: 16),
-                      onPressed: () {
-                        setState(() {
-                          sizeQuantities[size] = sizeQuantities[size]! + 1;
-                        });
-                      },
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 6.0),
+                      child: Text(
+                        sizeQuantities[size].toString(),
+                        style: theme.textTheme.bodyMedium,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 24,
+                      height: 24,
+                      child: IconButton(
+                        icon: const Icon(Icons.add, size: 16),
+                        onPressed: () {
+                          setState(() {
+                            sizeQuantities[size] = sizeQuantities[size]! + 1;
+                          });
+                        },
+                        padding: EdgeInsets.zero,
+                        constraints: const BoxConstraints(),
+                      ),
                     ),
                   ],
                 ),
@@ -205,9 +223,9 @@ class _AddProductPageState extends State<AddProductPage> {
           onSelected: (isSelected) {
             setState(() {
               if (isSelected) {
-                sizeQuantities[size] = 1;
+                sizeQuantities[size] = sizeQuantities[size] ?? 1; // Add if not selected
               } else {
-                sizeQuantities.remove(size);
+                sizeQuantities.remove(size); // Remove to deselect
               }
             });
           },
@@ -249,7 +267,7 @@ class _AddProductPageState extends State<AddProductPage> {
               ),
             ),
           );
-        }).take(5), // Display only 5 colors
+        }).toList(),
         GestureDetector(
           onTap: _openColorPickerDialog,
           child: Container(

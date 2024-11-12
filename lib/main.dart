@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       theme: TrendWaveTheme.lightTheme,
       darkTheme: TrendWaveTheme.darkTheme,
       themeMode: ThemeMode.system,
-      home: AddProductPage(),
+      home: CustomBottomNavigationBar(),
     );
   }
 }

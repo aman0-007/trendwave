@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:trendwave/components/featuredproducts.dart';
+import 'package:trendwave/components/topproducts.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -178,7 +180,8 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                 ],
               ),
             ),
-            Center(child: Text('Home Page', style: theme.textTheme.bodyMedium)),
+            ProductCardRow(),
+            TopProductsPage(),
           ],
         ),
       ),
