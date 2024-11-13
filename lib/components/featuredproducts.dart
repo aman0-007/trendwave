@@ -94,15 +94,14 @@ class TopProductsPage extends StatelessWidget {
                         ),
                       ),
                       // Buy Now Button
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
+                      Center(
                         child: ElevatedButton(
                           onPressed: () {
                             // Add action here for "Buy Now"
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: theme.colorScheme.secondary,
-                            padding: const EdgeInsets.symmetric(vertical: 10),
+                            padding: const EdgeInsets.symmetric( horizontal: 15.0),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8),
                             ),
@@ -121,7 +120,7 @@ class TopProductsPage extends StatelessWidget {
               ],
             ],
           ),
-          const SizedBox(height: 20.0),
+          const SizedBox(height: 7.0),
 
           // View More Button
           Center(

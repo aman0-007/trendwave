@@ -1,7 +1,12 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:trendwave/components/dealpage.dart';
 import 'package:trendwave/components/featuredproducts.dart';
+import 'package:trendwave/components/supersave.dart';
 import 'package:trendwave/components/topproducts.dart';
+import 'package:trendwave/components/imagecarousel.dart';
+import 'package:trendwave/components/top picks.dart';
+import 'package:trendwave/components/offcategories.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -125,64 +130,71 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
 
     return SafeArea(
       child: Scaffold(
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: displayHeight * 0.009),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: displayWidth * 0.01),
-              child: Row(
-                children: [
-                  Image.asset(
-                    'assets/app/TrendWaveLogo.png',
-                    width: displayWidth * 0.1,
-                    height: displayHeight * 0.05,
-                  ),
-                  SizedBox(width: displayWidth * 0.03),
-                  Expanded(
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.2),
-                            blurRadius: 10,
-                            offset: const Offset(0, 4),
-                          ),
-                        ],
-                      ),
-                      child: Row(
-                        children: [
-                          const Icon(Icons.search, color: Colors.grey),
-                          Expanded(
-                            child: TextField(
-                              focusNode: _focusNode,
-                              controller: _controller,
-                              decoration: InputDecoration(
-                                hintText: _displayText,
-                                hintStyle: const TextStyle(color: Colors.grey),
-                                border: InputBorder.none,
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: displayHeight * 0.009),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: displayWidth * 0.01),
+                child: Row(
+                  children: [
+                    Image.asset(
+                      'assets/app/TrendWaveLogo.png',
+                      width: displayWidth * 0.1,
+                      height: displayHeight * 0.05,
+                    ),
+                    SizedBox(width: displayWidth * 0.03),
+                    Expanded(
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.2),
+                              blurRadius: 10,
+                              offset: const Offset(0, 4),
+                            ),
+                          ],
+                        ),
+                        child: Row(
+                          children: [
+                            const Icon(Icons.search, color: Colors.grey),
+                            Expanded(
+                              child: TextField(
+                                focusNode: _focusNode,
+                                controller: _controller,
+                                decoration: InputDecoration(
+                                  hintText: _displayText,
+                                  hintStyle: const TextStyle(color: Colors.grey),
+                                  border: InputBorder.none,
+                                ),
+                                style: TextStyle(color: _isManualEntry ? Colors.black : Colors.grey),
                               ),
-                              style: TextStyle(color: _isManualEntry ? Colors.black : Colors.grey),
                             ),
-                          ),
-                          if (_showClearIcon)
-                            GestureDetector(
-                              onTap: _clearTextField,
-                              child: const Icon(Icons.clear, color: Colors.grey),
-                            ),
-                        ],
+                            if (_showClearIcon)
+                              GestureDetector(
+                                onTap: _clearTextField,
+                                child: const Icon(Icons.clear, color: Colors.grey),
+                              ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            ProductCardRow(),
-            TopProductsPage(),
-          ],
+              ImageCarousel(),
+              ProductCardRow(),
+              TopProductsPage(),
+              DealsForYou(),
+              TopPicksForYou(),
+              SupersavePage(),
+              OffCategoriesPage(),
+            ],
+          ),
         ),
       ),
     );
